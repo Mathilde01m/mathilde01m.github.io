@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bordure Dynamique</title>
+  <style>
+    .box {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    /* Couleurs de bordure selon les valeurs */
+    .border-0 { border: 5px solid #ff0000; } /* Rouge */
+    .border-1 { border: 5px solid #ff9900; } /* Orange */
+    .border-2 { border: 5px solid #ffff00; } /* Jaune */
+    .border-3 { border: 5px solid #00ff00; } /* Vert */
+    .border-4 { border: 5px solid #00ccff; } /* Bleu */
+    .border-5 { border: 5px solid #9900cc; } /* Violet */
+  </style>
+</head>
+<body>
+  <div class="box" data-value="0">Left Box</div>
+  <div class="box" data-value="5">Center Box</div>
+  <div class="box" data-value="4">Right Box</div>
+
+  <script>
+    // Fonction qui applique la couleur de bordure en fonction de la valeur
+    function updateBorders() {
+      // Récupérer toutes les boîtes
+      const boxes = document.querySelectorAll('.box');
+
+      // Pour chaque boîte, changer la bordure en fonction de la valeur de "data-value"
+      boxes.forEach(box => {
+        const value = parseInt(box.getAttribute('data-value')); // Récupérer la valeur de data-value
+        box.classList.remove('border-0', 'border-1', 'border-2', 'border-3', 'border-4', 'border-5'); // Retirer les classes précédentes
+        box.classList.add('border-' + value); // Appliquer la nouvelle bordure
+      });
+    }
+
+    // Appeler la fonction pour initialiser les bordures
+    updateBorders();
+  </script>
+</body>
+</html>
